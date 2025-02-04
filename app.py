@@ -1,13 +1,9 @@
-from flask import Flask,request
+from flask import Flask,request,render_template
 app=Flask(__name__)
 
 @app.route('/')
-def welcome():
-    return "This is my first flask app"
-
-@app.route('/root')
 def root():
-    return "This is my root page"
+    return render_template("index.html")
 
 @app.route('/amit')
 def Amit():
