@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <title>Contact Form</title>
+</head>
+
+<body>
+    <h1>Contact Form</h1>
+    <div>
+        <p>Enter your details</p>
+        <form action="/" method="POST" class="pure-form">
+            Name:<br>
+            <input type="text" name="name" required><br>
+            Email:<br>
+            <input type="email" name="email" required><br>
+            Message:<br>
+            <textarea name="message" rows="4" required></textarea><br>
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </form>
+    </div>
+
+    <div>
+        {% if name and email and message %}
+        <h2>Submitted Details:</h2>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Message:</strong> {{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
