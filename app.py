@@ -3,16 +3,9 @@ app=Flask(__name__)
 
 @app.route('/')
 def root():
-    return render_template("index.html")
+    name=''
+    if request.method=='POST' and 'username' in request.form:
+        name=request.form.get('username')
+    return render_template("index.html",name=name)
 
-@app.route('/amit')
-def Amit():
-    return "Hello Amit"
-
-@app.route('/methods',methods=['GET','POST'])
-def method():
-    if request.method=='POST':
-        return "You are using post"
-    else:
-        return"You are using Get"
 app.run()
