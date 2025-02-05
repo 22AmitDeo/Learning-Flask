@@ -1,7 +1,7 @@
 from flask import Flask,request,render_template
 app=Flask(__name__)
 
-@app.route('/')
+@app.route('/',methods=['POST','GET'])
 def root():
     name=''
     if request.method=='POST' and 'username' in request.form:
