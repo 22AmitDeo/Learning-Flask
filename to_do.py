@@ -1,22 +1,30 @@
-from flask import Flask, request
+from flask import Flask, request,render_template
 
 app = Flask(__name__)
 
-tasks = []  # Global list to store tasks
-
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def give_task():
-    data = request.json  # Expecting JSON input
-    task = data.get("task")  # Get task from JSON body
-    
-    if task:
-        tasks.append(task)
-        return f"Task added successfully."
-
+        Task1=''
+        Task2=''
+        Task3=''
+        Task4=''
+        if request.method =='POST' and 'Task1' in request.form:
+                Task1=request.form.get('Task1')
+                Task2=request.form.get('Task2')
+                Task3=request.form.get('Task3')
+                Task4=request.form.get('Task4')
+        return render_template("to_do.html",Task1=Task1,Task2=Task2,Task3=Task3,Task4=Task4)
 @app.route('/display', methods=['GET'])
 def see_task():
-    if tasks:
-        return "Tasks: " + ", ".join(tasks)
-    return "No tasks available"
+    Task1=''
+    Task2=''
+    Task3=''
+    Task4=''
+    if request.method =='POST' and 'Task1' in request.form:
+                Task1=request.form.get('Task1')
+                Task2=request.form.get('Task2')
+                Task3=request.form.get('Task3')
+                Task4=request.form.get('Task4')
+    return render_template("to_do.html",Task1=Task1,Task2=Task2,Task3=Task3,Task4=Task4)
     
 app.run()
